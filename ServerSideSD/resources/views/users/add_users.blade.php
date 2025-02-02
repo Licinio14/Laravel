@@ -48,7 +48,7 @@
             @enderror
         </fieldset>
         <br><hr>
-        <button type="submit" class="btn btn-primary">Send Form</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
 
     </form>
 

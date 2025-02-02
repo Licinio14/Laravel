@@ -12,9 +12,9 @@
     <h1>Aqui vês todos os users</h1>
 
     <hr><hr>
-    <p>Name: {{ $contactPerson->name}}</p>
-    <p>Address: {{ $contactPerson->address}}</p>
-    <p>Email: {{ $contactPerson->email}}</p>
+    <p>Name: {{ $cesaeInfo['name']}}</p>
+    <p>Address: {{ $cesaeInfo['address']}}</p>
+    <p>Email: {{ $cesaeInfo['email']}}</p>
     <hr><hr><br><br>
 
 

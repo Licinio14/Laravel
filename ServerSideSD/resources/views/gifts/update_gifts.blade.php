@@ -46,11 +46,11 @@
                 @endforeach
             </select>
             @error('address')
-                Cost invalido
+                User id invalido
             @enderror
         </fieldset>
         <br><hr>
-        <button type="submit" class="btn btn-primary">Send Form</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
         @error('id')
             <br>
             Ocurreu um erro inesperado!

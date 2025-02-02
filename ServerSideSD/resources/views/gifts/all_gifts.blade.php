@@ -84,18 +84,18 @@
                 </fieldset>
                 <br>
                 <fieldset>
-                    <legend>ID da pessoa Responsavel: </legend>
+                    <legend>Presente para: </legend>
                     <select id="user_id" name="user_id" class="users-input-text-style">
                         @foreach ($users as $opcao)
                             <option value="{{ $opcao->id}}">{{ $opcao->name}}</option>
                         @endforeach
                     </select>
                     @error('user_id')
-                        id invalido
+                        User id invalido
                     @enderror
                 </fieldset>
                 <br><hr>
-                <button type="submit" class="btn btn-primary">Send Form</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
 
             </form>
         </div>

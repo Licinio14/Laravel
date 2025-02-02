@@ -14,13 +14,13 @@ class UserControler extends Controller
         $cesaeInfo = $this->getCesaeInfo();
         $userInfo = $this->getAllUsers();
 
-        $contactPerson = DB::table('users')->where('name', 'Licinio')->first();
+        // $contactPerson = DB::table('users')->where('name', 'Licinio')->first();
 
         $this->updadetUserAtDB();
 
         // $this->deletUserAtDB(3);
 
-        return view('users.all_users', compact('cesaeInfo', 'userInfo','contactPerson'));
+        return view('users.all_users', compact('cesaeInfo', 'userInfo'));
     }
 
     public function nameUser($name){
