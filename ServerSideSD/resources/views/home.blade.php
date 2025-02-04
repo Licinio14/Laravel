@@ -2,7 +2,14 @@
 @extends('layouts.fo_layout')
 
 @section('content')
-    <h1>Esta é a homepage.</h1>
+    <h1>Olá @auth
+        {{ Auth::user()->name}}
+    @else
+        User
+    @endauth
+
+
+</h1>
     <img src="{{asset('img/photo.png')}}" alt="imagem aleatoria" class="img-home"></img>
 
     <p>{{ $contactInfo['name'] }}</p>

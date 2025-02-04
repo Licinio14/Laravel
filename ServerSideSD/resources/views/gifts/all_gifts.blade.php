@@ -84,14 +84,14 @@
                 </fieldset>
                 <br>
                 <fieldset>
-                    <legend>Presente para: </legend>
+                    <legend>ID da pessoa Responsavel: </legend>
                     <select id="user_id" name="user_id" class="users-input-text-style">
                         @foreach ($users as $opcao)
                             <option value="{{ $opcao->id}}">{{ $opcao->name}}</option>
                         @endforeach
                     </select>
                     @error('user_id')
-                        User id invalido
+                        id invalido
                     @enderror
                 </fieldset>
                 <br><hr>

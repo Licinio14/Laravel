@@ -7,10 +7,11 @@ use App\Http\Controllers\UserControler;
 use App\Http\Controllers\GiftsControler;
 use App\Http\Controllers\TasksControler;
 use App\Http\Controllers\FallBackControler;
+use App\Http\Controllers\DashboardController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Route::get('/', [HomeControler::class, 'index']);
 
@@ -26,7 +27,7 @@ Route::get('/add-users', [UserControler::class, 'addUser'] )->name('users.add');
 
 Route::get('/all-tasks', [TasksControler::class, 'allTasks'] )->name('tasks.all');
 
-Route::get('/showall-tasks', [TasksControler::class, 'showAllTasks'] )->name('tasks.showAll');
+Route::get('/showall-tasks', [TasksControler::class, 'showAllTasks'] )->name('tasks.showAll')->middleware('auth');
 
 Route::get('/showall-gifts', [GiftsControler::class, 'showAllGifts'] )->name('gifts.all');
 
@@ -57,3 +58,8 @@ Route::post('/create-gifts', [GiftsControler::class, 'createGifts'])->name('gift
 Route::get('/update-gifts/{id}', [GiftsControler::class, 'updateGifts'] )->name('gifts.update');
 
 Route::post('/update-gifts', [GiftsControler::class, 'updateGiftInfo'])->name('gifts.updateGift');
+
+Route::get('/update-tasks/{id}', [TasksControler::class, 'UpdateView'])->name('tasks.update');
+
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard.show')->middleware('auth');
+

@@ -46,7 +46,7 @@
                 @endforeach
             </select>
             @error('address')
-                User id invalido
+                Cost invalido
             @enderror
         </fieldset>
         <br><hr>

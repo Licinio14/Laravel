@@ -12,7 +12,18 @@
     <h1>As tarefas disponiveis sao: </h1>
     <br>
     <hr>
-    <br>
+
+    {{-- pesquisa --}}
+
+    <div class="container-fluid text-center">
+
+        <form action="">
+            <input type="text" id="search" name="search" value="{{ request()->query('search') }}">
+            <button type="submit" class="btn btn-secondary">Procurar</button>
+        </form>
+
+    </div>
+    <hr>
 
     <table class="table table-dark table-striped table-hover text-center">
 
@@ -21,7 +32,6 @@
             <td>Estado</td>
             <td>Limite</td>
             <td>Pessoa Responsavel</td>
-            <td></td>
             <td></td>
         </tr>
 
@@ -38,8 +48,9 @@
                     </td>
                     <td>{{ $newData->due_at}}</td>
                     <td>{{ $newData->userName}}</td>
-                    <td><a class="btn btn-info" href="{{ route('tasks.showone', $newData->id) }}">Ver</td>
-                    <td><a class="btn btn-danger" href="{{ route('tasks.deleteone', $newData->id) }}">Apagar</td>
+                    <td><a class="btn btn-info" href="{{ route('tasks.showone', $newData->id) }}">Ver</a>
+                    <a class="btn btn-danger" href="{{ route('tasks.deleteone', $newData->id) }}">Apagar</a>
+                    <a class="btn btn-info" href="{{ route('tasks.update', $newData->id) }}">Editar</a></td>
                 </tr>
 
         @endforeach

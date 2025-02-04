@@ -11,16 +11,32 @@ use Illuminate\Support\Facades\Hash;
 class UserControler extends Controller
 {
     public function allUser(){
-        $cesaeInfo = $this->getCesaeInfo();
-        $userInfo = $this->getAllUsers();
+        //pesquisa se existir
+        $search = null;
 
-        // $contactPerson = DB::table('users')->where('name', 'Licinio')->first();
+        //modo simples
+        // if(request()->query('search')){
+        //     $search = request()->query('search');
+        // }else {
+        //     $search = null;
+        // }
+
+        //com ternario
+        $search = request()->query('search')?  request()->query('search') : null;
+
+
+
+        $cesaeInfo = $this->getCesaeInfo();
+        $userInfo = $this->getAllUsers($search);
+
+        $contactPerson = DB::table('users')->where('name', 'Licinio')->first();
 
         $this->updadetUserAtDB();
 
         // $this->deletUserAtDB(3);
 
-        return view('users.all_users', compact('cesaeInfo', 'userInfo'));
+
+        return view('users.all_users', compact('cesaeInfo', 'userInfo','contactPerson'));
     }
 
     public function nameUser($name){
@@ -40,10 +56,18 @@ class UserControler extends Controller
         return $userInfo;
     }
 
-    protected function getAllUsers(){
+    protected function getAllUsers($search){
 
-        $userInfo = DB::table('users')
-        ->select('name','email','password','id')
+
+        $userInfo = DB::table('users');
+
+        if ($search){
+            $userInfo = $userInfo
+                ->where('name','like', "%{$search}%")
+                ->orWhere('email','like',$search);
+        }
+
+        $userInfo = $userInfo->select('name','email','password','id')
         ->get();
 
         return $userInfo;
@@ -144,11 +168,17 @@ class UserControler extends Controller
         //     $request->id;
         // }
 
+        // para saber se o id foi mandado, caso querei usar o mesmo codigo para inserir e updateUser
+        // o insert nao tem id, o update tem
+        // if(isset($request->id)){
+
+        // }else...
+
         $request->validate([
             'id' => 'required|exists:users,id',
             'name' => 'required|string|min:3',
-            'email' => 'required|email|unique:users',
-            'address' => 'required|min:5',
+            'address' => 'min:5|max:100',
+            'nif' => 'max:15'
         ]);
 
 
@@ -157,8 +187,8 @@ class UserControler extends Controller
         ->update([
             'updated_at' => now(),
             'name'=> $request->name,
-            'email' => $request->email,
-            'address' => $request->address
+            'address' => $request->address,
+            'nif' => $request->nif
         ]);
 
 

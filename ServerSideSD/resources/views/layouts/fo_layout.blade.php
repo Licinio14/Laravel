@@ -52,14 +52,61 @@
                                 <li><a class="dropdown-item" href="{{ route('tasks.add') }}">ADD Tasks</a></li>
                             </ul>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li> --}}
                     </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                    </form>
+                        @if (Route::has('login'))
+                            <nav class="-mx-3 flex flex-1 justify-end">
+                                @auth
+
+                                    <div class="row">
+                                        {{-- <div class="col">
+                                            <a
+                                                href="{{ route('dashboard.show') }}"
+                                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                            >
+                                                BackOffice
+                                            </a>
+                                        </div> --}}
+                                        <div class="col">
+                                            <form action="{{ route('dashboard.show')}}" method="">
+                                                @csrf
+                                                
+                                                <button type="submit" class="btn btn-info">Dashboard</button>
+
+                                            </form>
+                                        </div>
+                                        <div class="col">
+                                            <form action="{{ route('logout')}}" method="POST">
+                                                @csrf
+
+                                                <button type="submit" class="btn btn-danger">Logout</button>
+
+
+                                            </form>
+                                        </div>
+
+                                    </div>
+
+
+
+                                @else
+                                    <a
+                                        href="{{ route('login') }}"
+                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    >
+                                        Log in
+                                    </a>
+
+                                    @if (Route::has('register'))
+                                        <a
+                                            href="{{ route('users.add') }}"
+                                            class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                        >
+                                            Register
+                                        </a>
+                                    @endif
+                                @endauth
+                            </nav>
+                        @endif
                 </div>
             </div>
         </nav>
