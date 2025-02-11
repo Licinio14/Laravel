@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class UserControler extends Controller
 {
@@ -67,7 +68,7 @@ class UserControler extends Controller
                 ->orWhere('email','like',$search);
         }
 
-        $userInfo = $userInfo->select('name','email','password','id')
+        $userInfo = $userInfo->select('name','email','password','id','photo')
         ->get();
 
         return $userInfo;
@@ -121,7 +122,7 @@ class UserControler extends Controller
 
         $userInfo = DB::table('users')
         ->where('id',$id)
-        ->select('name','email','id','address','nif')
+        ->select('name','email','id','address','nif','photo')
         ->first();
 
         return view('users.one_users', compact('userInfo'));
@@ -178,9 +179,15 @@ class UserControler extends Controller
             'id' => 'required|exists:users,id',
             'name' => 'required|string|min:3',
             'address' => 'min:5|max:100',
-            'nif' => 'max:15'
+            'nif' => 'max:15',
+            'photo' => 'image'
         ]);
 
+        $photo = null;
+
+        if($request->hasFile('photo')){
+            $photo = Storage::putFile('userPhotos', $request->photo);
+        }
 
         DB::table('users')
         ->where('id',$request->id)
@@ -188,7 +195,8 @@ class UserControler extends Controller
             'updated_at' => now(),
             'name'=> $request->name,
             'address' => $request->address,
-            'nif' => $request->nif
+            'nif' => $request->nif,
+            'photo' => $photo
         ]);
 
 

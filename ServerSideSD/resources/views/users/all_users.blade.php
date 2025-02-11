@@ -39,6 +39,7 @@
             <td>ID</td>
             <td>Name</td>
             <td>Email</td>
+            <td>Photo</td>
             <td></td>
         </tr>
 
@@ -48,6 +49,7 @@
                     <td>{{ $array->id}}</td>
                     <td>{{ $array->name}}</td>
                     <td>{{ $array->email}}</td>
+                    <td><img width="50px" height="50px" src="{{ $array->photo ? asset('storage/' . $array->photo ) : asset('img/noimage.png')}}"> </td>
                     <td><a class="btn btn-info" href="{{ route('users.showone', $array->id) }}">Ver</a>
                     <a class="btn btn-danger" href="{{ route('users.update', $array->id) }}">Modificar</a>
                         @auth

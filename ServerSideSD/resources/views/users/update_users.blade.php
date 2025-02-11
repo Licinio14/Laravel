@@ -5,7 +5,7 @@
     <h1>Update Users</h1>
     <br><hr><br>
 
-    <form method="POST" action="{{ route('users.updateInfo') }}" class="text-center">
+    <form method="POST" action="{{ route('users.updateInfo') }}" class="text-center" enctype="multipart/form-data">
         @csrf
 
         <fieldset style="display: none">
@@ -42,6 +42,13 @@
             <input type="text" placeholder="Utilizador" id="nif" name="nif" value="{{$inf->nif}}" class="users-input-text-style"><br>
             @error('nif')
                 NIF invalido
+            @enderror
+        </fieldset>
+        <fieldset>
+            <legend>Photo : </legend>
+            <input type="file" accept="image/" placeholder="Utilizador" id="photo" name="photo" class="users-input-text-style"><br>
+            @error('photo')
+                Foto invalida
             @enderror
         </fieldset>
         <br><hr>
