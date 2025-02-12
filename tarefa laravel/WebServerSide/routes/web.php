@@ -22,4 +22,6 @@ Route::get('/show-bands', [BandsController::class, 'allbands'])->name('bands.sho
 
 Route::get('/show-one-bands/{id}', [BandsController::class, 'onebands'])->name('bands.show_one');
 
-Route::get('/delete-bans/{id}', [BandsController::class, 'deletebands'] )->name('bands.delete');
+Route::get('/delete-bands/{id}', [BandsController::class, 'deletebands'] )->name('bands.delete');
+
+Route::post('/create-bands', [BandsController::class, 'createbands'])->name('bands.create');

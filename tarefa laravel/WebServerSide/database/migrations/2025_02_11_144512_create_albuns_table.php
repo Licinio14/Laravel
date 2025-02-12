@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->integer('id_banda');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->date('date');
         });
     }
