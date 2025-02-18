@@ -4,9 +4,11 @@
 @section('content')
 
     @if (session('message'))
-    <div class="container-fluid message-add-user-sucess text-center">
-        <h3>{{session('message')}}</h3>
-    </div>
+        <br>
+
+        <div class="container-fluid message-add-user-sucess text-center">
+            <h3>{{session('message')}}</h3>
+        </div>
     @endif
 
     <br>
@@ -46,10 +48,11 @@
             <tr>
                 <td>{{ $array->id}}</td>
                 <td>{{ $array->name}}</td>
-                <td>{{ $array->quant_albuns}}</td>
+                <td>{{ $array->quant_albuns }}</td>
                 <td><img width="50px" height="50px" src="{{ $array->photo ? asset('storage/' . $array->photo ) : asset('img/noimage.png')}}"> </td>
                 <td><a class="btn btn-info" href="{{ route('bands.show_one', $array->id) }}">Ver Albuns</a>
                 <a class="btn btn-danger" href="{{ route('bands.delete', $array->id) }}">Apagar Banda</a>
+                <a class="btn btn-danger" href="{{ route('bands.edit', $array->id) }}">Editar Banda</a>
                     @auth
                         @if (Auth::user()->user_type == 1)
                             {{-- <a class="btn btn-danger" href="{{ route('users.deleteOne', $array->id) }}">Apagar</a> --}}
@@ -68,10 +71,19 @@
         <div class="container-fluid text-center">
             <h1>Adicionar nova banda</h1>
             <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
+
         </div>
     {{-- @endauth --}}
 
     <hr><hr><br>
+
+    @if (isset($edit))
+        <script>
+            window.onload = function() {
+                Show();
+            };
+        </script>
+    @endif
 
 
     {{-- formulario para criar prendas --}}
@@ -83,10 +95,12 @@
                 <h1 class="merriweather-regular">Adicionar nova banda</h1>
 
                 <hr>
-
+                <fieldset>
+                    <input type="hidden" id="id" name="id" value="{{ isset($edit) ? $edit->id : null; }}" class="users-input-text-style"><br>
+                </fieldset>
                 <fieldset>
                     <legend>Nome da banda: </legend>
-                    <input type="text" id="name" name="name" class="users-input-text-style"><br>
+                    <input type="text" id="name" name="name" value="{{ isset($edit) ? $edit->name : null; }}" class="users-input-text-style"><br>
                     @error('name')
                         Nome invalido
                     @enderror
@@ -94,7 +108,7 @@
                 <br>
                 <fieldset>
                     <legend>Quantidade de albuns: </legend>
-                    <input type="number" id="quant_albuns" name="quant_albuns" class="users-input-text-style" step="1" min="0"><br>
+                    <input type="number" id="quant_albuns" name="quant_albuns" value="{{ isset($edit) ? $edit->quant_albuns : 0; }}" class="users-input-text-style" step="1" min="0"><br>
                     @error('quant_albuns')
                         Quantidade invalida
                     @enderror
@@ -102,6 +116,7 @@
                 <br>
                 <fieldset>
                     <legend>Imagem da banda: </legend>
+                    <img src="{{ isset($edit) && $edit->photo != "" ? asset('storage/' . $edit->photo ) : asset('img/noimage.png') }}" width="50px" height="50px"><br><br>
                     <input type="file" accept="/image" id="photo" name="photo" class="users-input-text-style"><br>
                     @error('photo')
                         Foto invalida
@@ -109,14 +124,14 @@
                 </fieldset>
                 <br>
                 <br><hr>
-                <button type="submit" class="btn btn-primary">Adicionar</button>
+                <button type="submit" class="btn btn-primary">Submeter</button>
 
             </form>
         </div>
     </div>
 
 
-    <script src="js/script.js"></script>
+    <script src={{asset('js/script.js')}}></script>
 
 
 @endsection

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
+use App\Models\Banda;
 
 class BandsController extends Controller
 {
@@ -16,6 +17,8 @@ class BandsController extends Controller
         $search = request()->query('search')?  request()->query('search') : null;
 
         $BandInfo = $this->getAllBands($search);
+
+        // dd($quant);
 
         return view('bands.show_all', compact('BandInfo'));
     }
@@ -30,13 +33,22 @@ class BandsController extends Controller
             $BandInfo = $BandInfo
                 ->where('name','like', "%{$search}%");
         }
-
         $BandInfo = $BandInfo
         ->select('id','name','quant_albuns','photo')
         ->get();
 
+
+        // $BandInfo = Banda::leftJoin('albuns', 'bandas.id', '=', 'albuns.id_banda')
+        //     ->select('bandas.*', DB::raw('count(albuns.id) as albuns_count'))
+        //     ->groupBy('bandas.id','bandas.name','photo')
+        //     ->get();
+
+
+
         return $BandInfo;
+
     }
+
 
     public function onebands($id){
 
@@ -46,7 +58,18 @@ class BandsController extends Controller
 
         $BandInfo = $this->getOneBands($search,$id);
 
-        return view('bands.show_one', compact('BandInfo'));
+        $bandas = $this->getBandas();
+
+        return view('bands.show_one', compact('BandInfo','bandas'));
+    }
+
+    protected function getBandas(){
+        $bandas = DB::table('bandas')
+        ->select('name','id')
+        ->get();
+
+        return $bandas;
+
     }
 
 
@@ -100,13 +123,29 @@ class BandsController extends Controller
                 $photo = Storage::putFile('imgBands', $request->photo);
             }
 
-            DB::table('bandas')
-            ->where('id',$request->id)
-            ->update([
-                'name' => $request->name,
-                'quant_albuns'=> $request->quant_albuns,
-                'photo' => $photo
-            ]);
+
+            if ($photo != null){
+                DB::table('bandas')
+                ->where('id',$request->id)
+                ->update([
+                    'name' => $request->name,
+                    'quant_albuns'=> $request->quant_albuns,
+                    'photo' => $photo
+                ]);
+            }else {
+                DB::table('bandas')
+                ->where('id',$request->id)
+                ->update([
+                    'name' => $request->name,
+                    'quant_albuns'=> $request->quant_albuns,
+                ]);
+            }
+
+
+
+
+
+
 
 
         }else{
@@ -137,7 +176,34 @@ class BandsController extends Controller
 
         }
 
-        return redirect()->route('bands.show_alll')->with('message','Banda adicionada com sucesso');
+        return redirect()->route('bands.show_all')->with('message','Banda adicionada com sucesso');
+
+    }
+
+    public function getInfoForEdit($id){
+
+        $search = null;
+
+        $search = request()->query('search')?  request()->query('search') : null;
+
+        $BandInfo = $this->getAllBands($search);
+
+        $edit = $this->bandInfo($id);
+
+        return view('bands.show_all', compact('BandInfo','edit'));
+
+    }
+
+    public function bandInfo($id){
+
+        $edit = DB::table('bandas')
+        ->where('id', $id)
+        ->select('*')
+        ->first();
+
+        //dd($edit);
+
+        return $edit;
 
     }
 }

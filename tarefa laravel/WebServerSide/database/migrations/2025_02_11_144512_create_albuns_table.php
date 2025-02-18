@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('albuns', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('id_banda');
             $table->string('photo')->nullable();
             $table->date('date');
+            $table->unsignedBigInteger("id_banda");
+            $table->foreign("id_banda")->references("id")->on("bandas");
         });
     }
 
