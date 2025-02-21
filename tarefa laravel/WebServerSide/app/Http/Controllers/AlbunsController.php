@@ -20,8 +20,6 @@ class AlbunsController extends Controller
                 'id_banda' => 'required|exists:bandas,id'
             ]);
 
-            dd($request);
-
             $photo = null;
 
             if($request->hasFile('photo')){

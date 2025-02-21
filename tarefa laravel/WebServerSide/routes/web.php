@@ -30,10 +30,10 @@ Route::post('/create-bands', [BandsController::class, 'createbands'])->name('ban
 Route::get('/edit-bands/{id}', [BandsController::class, 'getInfoForEdit'])->name('bands.edit');
 
 //rotas para albuns
-Route::post('/create-albuns', [BandsController::class, 'createalbuns'])->name('albuns.create');
+Route::post('/create-albuns', [AlbunsController::class, 'createalbuns'])->name('albuns.create');
 
-Route::get('/delete-albuns/{id}', [BandsController::class, 'deletealbuns'] )->name('albuns.delete');
+Route::get('/delete-albuns/{id}', [AlbunsController::class, 'deletealbuns'] )->name('albuns.delete');
 
-Route::get('/edit-albuns/{id}', [BandsController::class, 'getInfoForEditAlbuns'])->name('albuns.edit');
+Route::get('/edit-albuns/{id}', [AlbunsController::class, 'getInfoForEditAlbuns'])->name('albuns.edit');
 
 

@@ -11,7 +11,7 @@
 
     <br>
 
-    <h1>Aqui vês todas as bandas</h1>
+    <h1>Aqui vês todos os albuns da banda</h1>
 
     <br><hr><hr>
 
@@ -51,7 +51,7 @@
                 <td>{{ $array->id_banda}}</td>
                 <td>{{ $array->date}}</td>
                 <td><img width="50px" height="50px" src="{{ $array->photo ? asset('storage/' . $array->photo ) : asset('img/noimage.png')}}"> </td>
-                <td><a class="btn btn-danger" href="{{ route('albuns.edit', $array->id) }}">Modificar</a>
+                <td><a class="btn btn-danger" onclick="albunsShow({{$array->id}})" >Modificar</a>
                     {{-- @auth
                         @if (Auth::user()->user_type == 1) --}}
                             <a class="btn btn-danger" href="{{ route('albuns.delete', $array->id) }}">Apagar</a>
@@ -75,13 +75,13 @@
 
 <hr><hr><br>
 
-@if (isset($edit))
-    <script>
-        window.onload = function() {
-            Show();
-        };
-    </script>
-@endif
+<script>
+    // Aqui estamos passando a variável PHP para o JavaScript
+    var dados = @json($BandInfo);
+
+
+</script>
+
 
 
 {{-- formulario para criar prendas --}}
@@ -126,7 +126,7 @@
             <br>
             <fieldset>
                 <legend>Imagem do album: </legend>
-                <img src="{{ isset($edit) && $edit->photo != "" ? asset('storage/' . $edit->photo ) : asset('img/noimage.png') }}" width="50px" height="50px"><br><br>
+                <img id="mostrarImagem" src="" width="50px" height="50px"><br><br>
                 <input type="file" accept="/image" id="photo" name="photo" class="users-input-text-style"><br>
                 @error('photo')
                     Foto invalida
@@ -141,7 +141,7 @@
 </div>
 
 
-<script src={{asset('js/script.js')}}></script>
+<script src={{asset('js/scriptAlbuns.js')}}></script>
 
 
 @endsection

@@ -80,7 +80,7 @@
     @if (isset($edit))
         <script>
             window.onload = function() {
-                Show();
+                ShowEditar();
             };
         </script>
     @endif
@@ -116,7 +116,7 @@
                 <br>
                 <fieldset>
                     <legend>Imagem da banda: </legend>
-                    <img src="{{ isset($edit) && $edit->photo != "" ? asset('storage/' . $edit->photo ) : asset('img/noimage.png') }}" width="50px" height="50px"><br><br>
+                    <img id="imagemMostrar" src="{{ isset($edit) && $edit->photo != "" ? asset('storage/' . $edit->photo ) : asset('img/noimage.png') }}" width="50px" height="50px"><br><br>
                     <input type="file" accept="/image" id="photo" name="photo" class="users-input-text-style"><br>
                     @error('photo')
                         Foto invalida
