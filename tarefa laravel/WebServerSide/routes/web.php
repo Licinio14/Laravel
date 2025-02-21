@@ -6,7 +6,7 @@ use App\Http\Controllers\BandsController;
 use App\Http\Controllers\AlbunsController;
 use App\Http\Controllers\FallBackControler;
 
-
+//so para ter acesso a dash do laravel
 Route::get('/dash', function () {
     return view('welcome');
 });
