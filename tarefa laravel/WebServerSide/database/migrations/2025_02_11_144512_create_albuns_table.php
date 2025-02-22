@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->date('date');
             $table->unsignedBigInteger("id_banda");
-            $table->foreign("id_banda")->references("id")->on("bandas");
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
+            $table->foreign("id_banda")->references("id")->on("bandas")->onDelete('cascade');
         });
     }
 

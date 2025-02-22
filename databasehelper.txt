@@ -1,0 +1,9 @@
+php artisan migrate:fresh
+
+php artisan db:seed
+
+
+admin: admin@gmail.com
+
+link para a storage, tem de ser ativa em novos projectos e pcs
+hp artisan storage:link

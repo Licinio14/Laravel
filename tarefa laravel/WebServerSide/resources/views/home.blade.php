@@ -30,11 +30,11 @@
               <div class="card h-100">
                 <img src="{{asset('img/banda1.jpeg')}}" class="card-img-top" alt="imagem de uma banda" style="width: 100%; height: 200px;">
                 <div class="card-body">
-                  <h5 class="card-title">Banda 1</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                  <h5 class="card-title">Crimson Echo</h5>
+                  <p class="card-text">Uma banda de rock progressivo que combina guitarras distorcidas com letras introspectivas, criando uma experiência sonora que ecoa na mente dos ouvintes.</p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Inserida ha 3 dias</small>
                 </div>
               </div>
             </div>
@@ -42,11 +42,11 @@
               <div class="card h-100">
                 <img src="{{asset('img/banda2.jpg')}}" class="card-img-top" alt="imagem de uma banda" style="width: 100%; height: 200px;">
                 <div class="card-body">
-                  <h5 class="card-title">Banda 2</h5>
-                  <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                  <h5 class="card-title">Neon Shadows</h5>
+                  <p class="card-text">Um grupo de synthwave que mistura batidas eletrônicas dos anos 80 com temas futuristas, transportando o público para uma viagem nostálgica e cheia de luzes neon.</p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Inserida ha 2 semanas</small>
                 </div>
               </div>
             </div>
@@ -54,11 +54,11 @@
               <div class="card h-100">
                 <img src="{{asset('img/banda3.jpg')}}" class="card-img-top" alt="imagem de uma banda" style="width: 100%; height: 200px;">
                 <div class="card-body">
-                  <h5 class="card-title">Banda 3</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                  <h5 class="card-title">Velvet Abyss</h5>
+                  <p class="card-text">Uma banda de metal gótico que explora temas sombrios e melancólicos, com vocais poderosos e instrumentais densos que mergulham o ouvinte em um abismo de emoções.</p>
                 </div>
                 <div class="card-footer">
-                  <small class="text-body-secondary">Last updated 3 mins ago</small>
+                  <small class="text-body-secondary">Inserida ha 4 semanas</small>
                 </div>
               </div>
             </div>

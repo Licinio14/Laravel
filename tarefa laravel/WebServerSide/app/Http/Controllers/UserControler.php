@@ -23,7 +23,7 @@ class UserControler extends Controller
         User::insert([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->pd),
+            'password' => Hash::make($request->password),
             'created_at' => now()
         ]);
 

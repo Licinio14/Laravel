@@ -37,58 +37,12 @@ class BandsController extends Controller
         ->select('id','name','quant_albuns','photo')
         ->get();
 
-
-        // $BandInfo = Banda::leftJoin('albuns', 'bandas.id', '=', 'albuns.id_banda')
-        //     ->select('bandas.*', DB::raw('count(albuns.id) as albuns_count'))
-        //     ->groupBy('bandas.id','bandas.name','photo')
-        //     ->get();
-
-
-
         return $BandInfo;
 
     }
 
 
-    public function onebands($id){
-
-        $search = null;
-
-        $search = request()->query('search')?  request()->query('search') : null;
-
-        $BandInfo = $this->getOneBands($search,$id);
-
-        $bandas = $this->getBandas();
-
-        return view('bands.show_one', compact('BandInfo','bandas'));
-    }
-
-    protected function getBandas(){
-        $bandas = DB::table('bandas')
-        ->select('name','id')
-        ->get();
-
-        return $bandas;
-
-    }
-
-
-    protected function getOneBands($search,$id){
-
-
-        $BandInfo = DB::table('albuns')
-        ->where('id_banda', $id);
-
-        if ($search){
-            $BandInfo = $BandInfo
-                ->where('name','like', "%{$search}%");
-        }
-
-        $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
-        ->get();
-
-        return $BandInfo;
-    }
+    
 
     public function deletebands($id){
 

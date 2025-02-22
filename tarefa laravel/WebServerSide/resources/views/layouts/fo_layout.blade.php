@@ -16,6 +16,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
+
+
 </head>
 <body>
 
@@ -31,10 +33,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('bands.show_all')}}">Lista Bandas</a>
               </li>
-
-              {{-- <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-              </li> --}}
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('albuns.show_all')}}">Lista Albuns</a>
+              </li>
             </ul>
             <form class="d-flex" role="search">
                 @if (Route::has('login'))
@@ -42,14 +43,14 @@
                         @auth
 
                             <div class="row">
-                                {{-- <div class="col">
+                                <div class="col">
                                     <a
                                         href="{{ route('dashboard.show') }}"
                                         class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
                                     >
                                         BackOffice
                                     </a>
-                                </div> --}}
+                                </div>
                                 <div class="col">
                                     <form action="{{ route('dashboard.show')}}" method="">
                                         @csrf
@@ -67,6 +68,7 @@
 
                                     </form>
                                 </div>
+
 
                             </div>
 

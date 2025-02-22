@@ -101,5 +101,39 @@ h4 {
 }
 
 
+.pagination {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-item .page-link {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #494949;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #22abce;
+    border-color: #007bff;
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #474747;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+
 
 

@@ -40,7 +40,9 @@
         <td>Banda</td>
         <td>Data Lançamento</td>
         <td>Foto</td>
-        <td></td>
+        @auth
+            <td></td>
+        @endauth
     </tr>
 
     @foreach ($BandInfo as $array)
@@ -51,29 +53,42 @@
                 <td>{{ $array->id_banda}}</td>
                 <td>{{ $array->date}}</td>
                 <td><img width="50px" height="50px" src="{{ $array->photo ? asset('storage/' . $array->photo ) : asset('img/noimage.png')}}"> </td>
-                <td><a class="btn btn-danger" onclick="albunsShow({{$array->id}})" >Modificar</a>
-                    {{-- @auth
-                        @if (Auth::user()->user_type == 1) --}}
+
+                    @auth
+                        <td>
+
+                            <a class="btn btn-danger" onclick="albunsShow({{$array->id}})" >Modificar</a>
+
+                        @if (Auth::user()->user_type == 1)
                             <a class="btn btn-danger" href="{{ route('albuns.delete', $array->id) }}">Apagar</a>
-                        {{-- @endif
-                    @endauth --}}
-                </td>
+                        @endif
+
+                        </td>
+                    @endauth
+
             </tr>
 
     @endforeach
 
     </table>
-    <br><hr><hr><br>
 
-    {{-- @auth --}}
-    <div class="container-fluid text-center">
-        <h1>Adicionar nova banda</h1>
-        <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
 
-    </div>
-{{-- @endauth --}}
+    @auth
 
-<hr><hr><br>
+        @if (Auth::user()->user_type == 1)
+
+            <br><hr><hr>
+
+            <div class="container-fluid text-center">
+                <h1>Adicionar nova banda</h1>
+                <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
+            </div>
+
+            <hr><hr><br>
+        @endif
+
+
+    @endauth
 
 <script>
     // Aqui estamos passando a variável PHP para o JavaScript

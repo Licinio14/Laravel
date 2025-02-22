@@ -2,12 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Albun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class AlbunsController extends Controller
 {
+    public function index(){
+
+
+
+        $search = null;
+
+        $search = request()->query('search')?  request()->query('search') : null;
+
+        $BandInfo = $this->getAllAlbuns($search);
+
+        //$BandInfo = Albun::simplePaginate(50);
+
+        $bandas = $this->getBandas();
+
+        return view('albuns.show_all', compact('BandInfo','bandas'));
+    }
+
+
     public function createalbuns(Request $request){
 
         if($request->id != ""){
@@ -99,5 +118,60 @@ class AlbunsController extends Controller
 
         return back()->compact('edit');
 
+    }
+
+    public function onebands($id){
+
+        $search = null;
+
+        $search = request()->query('search')?  request()->query('search') : null;
+
+        $BandInfo = $this->getOneBands($search,$id);
+
+        $bandas = $this->getBandas();
+
+        return view('albuns.show_one', compact('BandInfo','bandas'));
+    }
+
+    protected function getBandas(){
+        $bandas = DB::table('bandas')
+        ->select('name','id')
+        ->get();
+
+        return $bandas;
+    }
+
+
+    protected function getOneBands($search,$id){
+
+
+        $BandInfo = DB::table('albuns')
+        ->where('id_banda', $id);
+
+        if ($search){
+            $BandInfo = $BandInfo
+                ->where('name','like', "%{$search}%");
+        }
+
+        $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
+        ->get();
+
+        return $BandInfo;
+    }
+
+    protected function getAllAlbuns($search){
+
+
+        $BandInfo = DB::table('albuns');
+
+        if ($search){
+            $BandInfo = $BandInfo
+                ->where('name','like', "%{$search}%");
+        }
+
+        $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
+        ->paginate(50);
+
+        return $BandInfo;
     }
 }

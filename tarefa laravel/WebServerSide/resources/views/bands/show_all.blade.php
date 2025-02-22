@@ -51,12 +51,17 @@
                 <td>{{ $array->quant_albuns }}</td>
                 <td><img width="50px" height="50px" src="{{ $array->photo ? asset('storage/' . $array->photo ) : asset('img/noimage.png')}}"> </td>
                 <td><a class="btn btn-info" href="{{ route('bands.show_one', $array->id) }}">Ver Albuns</a>
-                <a class="btn btn-danger" href="{{ route('bands.delete', $array->id) }}">Apagar Banda</a>
-                <a class="btn btn-danger" href="{{ route('bands.edit', $array->id) }}">Editar Banda</a>
+
+
+
+
                     @auth
+                        <a class="btn btn-danger" href="{{ route('bands.edit', $array->id) }}">Editar Banda</a>
+
                         @if (Auth::user()->user_type == 1)
-                            {{-- <a class="btn btn-danger" href="{{ route('users.deleteOne', $array->id) }}">Apagar</a> --}}
+                            <a class="btn btn-danger" href="{{ route('bands.delete', $array->id) }}">Apagar Banda</a>
                         @endif
+
                     @endauth
                 </td>
             </tr>
@@ -65,17 +70,26 @@
 
     </table>
 
-    <br><hr><hr>
 
-    {{-- @auth --}}
-        <div class="container-fluid text-center">
-            <h1>Adicionar nova banda</h1>
-            <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
 
-        </div>
-    {{-- @endauth --}}
+    @auth
 
-    <hr><hr><br>
+        @if (Auth::user()->user_type == 1)
+
+            <br><hr><hr>
+
+            <div class="container-fluid text-center">
+                <h1>Adicionar nova banda</h1>
+                <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
+            </div>
+            
+            <hr><hr><br>
+        @endif
+
+
+    @endauth
+
+
 
     @if (isset($edit))
         <script>

@@ -4,23 +4,25 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Banda;
 
-class Banda extends Model
+class Albun extends Model
 {
     use HasFactory;
 
     // Nome da tabela (opcional, se o nome da tabela for diferente do padrão)
-    protected $table = 'bandas';
+    protected $table = 'albuns';
 
     // Campos que podem ser preenchidos em massa (Mass Assignment)
     protected $fillable = [
         'name',
-        'quant_albuns',
+        'date',
+        'id_banda', // Cria uma banda automaticamente,
     ];
 
-    // Relacionamento com a tabela `albuns` (se houver)
-    public function albuns()
+    // Relacionamento com a tabela `bandas` (se houver)
+    public function banda()
     {
-        return $this->hasMany(Album::class);
+        return $this->belongsTo(Banda::class);
     }
 }
