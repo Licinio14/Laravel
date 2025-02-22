@@ -2,20 +2,48 @@
 
 @section('content')
 
-    <form method="POST" action="{{route('login')}}">
+    <br><hr>
+    <h1>Criar conta</h1>
+    <hr><br>
+
+    <form method="POST" action="{{ route('users.create') }}" class="text-center" enctype="multipart/form-data">
         @csrf
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        <div id="emailHelp" class="form-text" style="color: white">We'll share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <br><br>
-        <a href="{{ route('password.request')}}">Esqueci-me da password</a>
+
+        <fieldset>
+            <legend>Nome: </legend>
+            <input type="text" id="name" name="name" class="users-input-text-style"><br>
+            @error('name')
+                Nome invalido
+            @enderror
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Email: </legend>
+            <input type="text" id="email" name="email" class="users-input-text-style"><br>
+            @error('email')
+                Nome invalido
+            @enderror
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Password: </legend>
+            <input type="password" id="password" name="password" class="users-input-text-style"><br>
+            @error('password')
+                Password invalida
+            @enderror
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend>Imagem do album: </legend>
+            <input type="file" accept="/image" id="photo" name="photo" class="users-input-text-style"><br>
+            @error('photo')
+                Foto invalida
+            @enderror
+        </fieldset>
+        <br>
+        <br><hr>
+        <button type="submit" class="btn btn-primary">Submeter</button>
+
     </form>
 
 @endsection

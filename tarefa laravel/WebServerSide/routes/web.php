@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeControler;
+use App\Http\Controllers\UserControler;
 use App\Http\Controllers\BandsController;
 use App\Http\Controllers\AlbunsController;
 use App\Http\Controllers\FallBackControler;
@@ -35,5 +36,11 @@ Route::post('/create-albuns', [AlbunsController::class, 'createalbuns'])->name('
 Route::get('/delete-albuns/{id}', [AlbunsController::class, 'deletealbuns'] )->name('albuns.delete');
 
 Route::get('/edit-albuns/{id}', [AlbunsController::class, 'getInfoForEditAlbuns'])->name('albuns.edit');
+
+//para utilizadores
+
+Route::get('/add-users', [UserControler::class, 'addUser'] )->name('users.add');
+
+Route::post('/create-users', [UserControler::class, 'createUser'] )->name('users.create');
 
 

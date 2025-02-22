@@ -3,6 +3,16 @@
 
 @section('content')
 
+    @if (session('message'))
+        <br><hr><br>
+
+        <div class="container-fluid message-add-user-sucess text-center">
+            <h3>{{session('message')}}</h3>
+        </div>
+
+        <br><hr><br>
+    @endif
+
     <div class="container-fluid">
         <hr>
         <h1 class="merriweather-regular text-center">Bem-vindo a melhor database de bandas</h1>
