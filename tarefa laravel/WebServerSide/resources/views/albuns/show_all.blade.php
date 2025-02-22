@@ -59,7 +59,7 @@
                         @auth
                             <td>
 
-                                <a class="btn btn-danger" onclick="albunsShow({{$array->id}})" >Modificar</a>
+                                <a class="btn btn-danger" onclick="albunsShow({{$array->id}})" >Editar Albuns</a>
 
                             @if (Auth::user()->user_type == 1)
                                 <a class="btn btn-danger" href="{{ route('albuns.delete', $array->id) }}">Apagar</a>
@@ -90,7 +90,7 @@
 
 
             <div class="container-fluid text-center">
-                <h1>Adicionar nova banda</h1>
+                <h1>Adicionar novo album</h1>
                 <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
             </div>
 

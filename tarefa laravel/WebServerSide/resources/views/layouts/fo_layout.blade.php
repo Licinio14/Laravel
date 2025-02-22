@@ -37,30 +37,21 @@
                 <a class="nav-link" href="{{route('albuns.show_all')}}">Lista Albuns</a>
               </li>
             </ul>
-            <form class="d-flex" role="search">
+
                 @if (Route::has('login'))
                     <nav class="-mx-3 flex flex-1 justify-end">
                         @auth
 
                             <div class="row">
+
                                 <div class="col">
-                                    <a
-                                        href="{{ route('dashboard.show') }}"
-                                        class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
-                                    >
-                                        BackOffice
+                                    <a href="{{ route('dashboard.show') }}"
+                                       class="btn btn-info">
+                                        Dashboard
                                     </a>
                                 </div>
                                 <div class="col">
-                                    <form action="{{ route('dashboard.show')}}" method="">
-                                        @csrf
-
-                                        <button type="submit" class="btn btn-info">Dashboard</button>
-
-                                    </form>
-                                </div>
-                                <div class="col">
-                                    <form action="{{ route('logout')}}" method="POST">
+                                    <form name="logout" action="{{ route('logout')}}" method="POST">
                                         @csrf
 
                                         <button type="submit" class="btn btn-danger">Logout</button>
@@ -77,7 +68,7 @@
                         @else
                             <a
                                 href="{{ route('login') }}"
-                                class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                class="btn btn-info"
                             >
                                 Log in
                             </a>
@@ -85,7 +76,7 @@
                             @if (Route::has('register'))
                                 <a
                                     href="{{ route('users.add') }}"
-                                    class="rounded-md px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white"
+                                    class="btn btn-info"
                                 >
                                     Register
                                 </a>
@@ -93,7 +84,7 @@
                         @endauth
                     </nav>
                 @endif
-            </form>
+
           </div>
         </div>
       </nav>

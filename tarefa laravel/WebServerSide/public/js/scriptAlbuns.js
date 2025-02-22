@@ -14,6 +14,8 @@ function Show(){
 
 function albunsShow($id){
 
+    console.log(dados)
+
     let campoID = document.getElementById('id')
     let campoNomeAlbum = document.getElementById('name')
     let campoBanda = document.getElementById('id_banda')
@@ -21,7 +23,7 @@ function albunsShow($id){
     let campoImagem = document.getElementById('mostrarImagem')
     document.getElementById('mostrarImagem').style.display = ""
 
-    dados.forEach(element => {
+    dados.data.forEach(element => {
 
         if (element['id'] == $id){
 

@@ -21,7 +21,7 @@
             <legend>Email: </legend>
             <input type="text" id="email" name="email" class="users-input-text-style"><br>
             @error('email')
-                Nome invalido
+                Email invalido
             @enderror
         </fieldset>
         <br>
