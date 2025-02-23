@@ -3,14 +3,22 @@
 
 @section('content')
 
+    @if (session('error'))
+        <br><hr><br>
+
+        <div class="container-fluid message-add-user-error text-center">
+            <h3>{{session('error')}}</h3>
+        </div>
+        <br>
+    @endif
+
     @if (session('message'))
         <br><hr><br>
 
         <div class="container-fluid message-add-user-sucess text-center">
             <h3>{{session('message')}}</h3>
         </div>
-
-        <br><hr><br>
+        <br>
     @endif
 
     <div class="container-fluid">

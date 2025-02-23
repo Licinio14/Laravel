@@ -36,6 +36,9 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('albuns.show_all')}}">Lista Albuns</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('chat.show')}}">Chat</a>
+              </li>
             </ul>
 
                 @if (Route::has('login'))

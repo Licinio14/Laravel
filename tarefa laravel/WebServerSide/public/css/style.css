@@ -72,6 +72,12 @@ h4 {
     border-radius: 20px;
 }
 
+.message-add-user-error{
+    background-color: rgb(252, 49, 49);
+    color: black;
+    border-radius: 20px;
+}
+
 .modal{
     position: fixed;
     top: 0;

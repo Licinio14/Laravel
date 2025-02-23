@@ -82,7 +82,7 @@
                 <h1>Adicionar nova banda</h1>
                 <img src="{{asset('img/new.png')}}" alt="imagem: nova prenda" class="img-gifts-add" style="cursor: pointer;" onclick="Show()">
             </div>
-            
+
             <hr><hr><br>
         @endif
 
@@ -100,7 +100,6 @@
     @endif
 
 
-    {{-- formulario para criar prendas --}}
     <div class="modal modal-add-gifts" id="addGifts">
         <div class="modal-content" id="formAddGifts">
             <form method="POST" action="{{ route('bands.create') }}" class="text-center" enctype="multipart/form-data">

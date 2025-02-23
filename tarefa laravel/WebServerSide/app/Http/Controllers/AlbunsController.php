@@ -19,8 +19,6 @@ class AlbunsController extends Controller
 
         $BandInfo = $this->getAllAlbuns($search);
 
-        //$BandInfo = Albun::simplePaginate(50);
-
         $bandas = $this->getBandas();
 
         return view('albuns.show_all', compact('BandInfo','bandas'));
