@@ -32,6 +32,20 @@
             @endif
         @endauth
 
+
+        {{-- pesquisa --}}
+
+        <div class="container-fluid text-center">
+
+            <form action="">
+                <input type="text" id="search" name="search" value="{{ request()->query('search') }}">
+                <button type="submit" class="btn btn-secondary">Procurar</button>
+            </form>
+
+        </div>
+
+        <br><hr><br>
+
         <table class="table table-dark table-striped table-hover text-center">
 
             <tr>
@@ -73,6 +87,13 @@
             @endforeach
 
         </table>
+
+        @if (method_exists($Users, 'links'))
+            <div class="container-fluid">
+                {{ $Users->links('pagination::bootstrap-5') }}
+            </div>
+        @endif
+
 
         <script>
             // Aqui estamos passando a variável PHP para o JavaScript

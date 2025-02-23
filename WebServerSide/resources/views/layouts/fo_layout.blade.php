@@ -93,12 +93,23 @@
       </nav>
 
 
-
     {{-- container para o conteudo nao ficar colado a lateral --}}
     <div class="container body-div">
         {{-- chamar o conteudo // 'content' é o nome que vai chamar --}}
         @yield('content')
     </div>
+
+    <br><br>
+
+    {{-- footer --}}
+    <footer class="text-center text-lg-start footer-color bg-primary">
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2025 Copyright:
+          <a class="text-body footer-text-link-color" target="_blank" href="https://github.com/Licinio14?tab=repositories">GitHUb</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
 
 
     {{-- script bootstrap --}}

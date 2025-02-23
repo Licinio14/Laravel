@@ -148,11 +148,15 @@ class AlbunsController extends Controller
 
         if ($search){
             $BandInfo = $BandInfo
-                ->where('name','like', "%{$search}%");
+                ->where('name','like', "%{$search}%")
+                ->select('id','name','id_banda','photo','date')
+                ->get();
+        }else {
+            $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
+            ->paginate(10);
+
         }
 
-        $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
-        ->get();
 
         return $BandInfo;
     }
@@ -164,11 +168,16 @@ class AlbunsController extends Controller
 
         if ($search){
             $BandInfo = $BandInfo
-                ->where('name','like', "%{$search}%");
+                ->where('name','like', "%{$search}%")
+                ->select('id','name','id_banda','photo','date')
+            ->get();
+
+        }else{
+            $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
+            ->paginate(10);
         }
 
-        $BandInfo = $BandInfo->select('id','name','id_banda','photo','date')
-        ->paginate(50);
+
 
         return $BandInfo;
     }

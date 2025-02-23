@@ -31,18 +31,22 @@ class BandsController extends Controller
 
         if ($search){
             $BandInfo = $BandInfo
-                ->where('name','like', "%{$search}%");
+                ->where('name','like', "%{$search}%")
+                ->select('id','name','quant_albuns','photo')
+                ->get();
+        }else{
+            $BandInfo = $BandInfo
+            ->select('id','name','quant_albuns','photo')
+            ->paginate(10);
         }
-        $BandInfo = $BandInfo
-        ->select('id','name','quant_albuns','photo')
-        ->get();
+
 
         return $BandInfo;
 
     }
 
 
-    
+
 
     public function deletebands($id){
 

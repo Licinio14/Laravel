@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 23, 2025 at 01:50 AM
+-- Generation Time: Feb 23, 2025 at 01:41 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -1333,8 +1333,10 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('c525a5357e97fef8d3db25841c86da1a', 'i:1;', 1740271594),
-('c525a5357e97fef8d3db25841c86da1a:timer', 'i:1740271594;', 1740271594);
+('c525a5357e97fef8d3db25841c86da1a', 'i:1;', 1740312580),
+('c525a5357e97fef8d3db25841c86da1a:timer', 'i:1740312580;', 1740312580),
+('dd5ca195470faea3dc7685694a22a950', 'i:2;', 1740314353),
+('dd5ca195470faea3dc7685694a22a950:timer', 'i:1740314353;', 1740314353);
 
 -- --------------------------------------------------------
 
@@ -1469,7 +1471,8 @@ INSERT INTO `chats` (`id`, `title`, `coment`, `date`, `created_at`, `updated_at`
 (98, 'beatae perferendis qui', 'Voluptas explicabo nostrum qui et autem perspiciatis.', '2024-05-31 23:45:06', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 9),
 (99, 'quasi molestiae quis', 'Ratione provident dolorem reiciendis sed.', '2024-05-31 23:45:06', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 18),
 (100, 'ducimus dolores ut', 'Alias eius placeat illum libero et.', '2024-05-31 23:45:06', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 36),
-(101, 'teste', 'teste teste teste', '2025-02-23 00:47:30', '2025-02-23 00:47:30', '2025-02-23 00:47:30', 251);
+(101, 'teste', 'teste teste teste', '2025-02-23 00:47:30', '2025-02-23 00:47:30', '2025-02-23 00:47:30', 251),
+(102, 'teste user com imagem', 'Este user tem imagem, este comentario é para testar se ta a funcionar!', '2025-02-23 12:39:11', '2025-02-23 12:39:11', '2025-02-23 12:39:11', 252);
 
 -- --------------------------------------------------------
 
@@ -1581,6 +1584,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('DHNbQEhkGzGgnmQBgDNmSmSC0AU5sYYTasZoI1jh', 252, '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiSk42Zkw5NDJlVTBaaEE4UlF4OUtGVEVMazJGb1lvMjQ4dnNaa3lEcyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMyOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvc2hvdy1iYW5kcyI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjI1Mjt9', 1740314361),
+('eYqJVbP8THZy2vSzmhKDLYe5SR2BlTiclJg5Z3rX', 251, '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWmZHdTlxbnc2T3NteHl1UG1McHZBYWpiRTRWSUhia2NpTE1GRWVuSiI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvZGFzaGJvYXJkIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MjUxO30=', 1740313806),
 ('vzzMnNFJ63PMoQNAJKNnkGhRIXAikywIDa4NvC7X', 251, '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 OPR/117.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiNlBXNnVTNUZacXVwalp1aEc0V0s3TmlINjVKaU1GTldUNFZFSm5BeCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjM0OiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvY2hhdD9wYWdlPTExIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MjUxO30=', 1740271653);
 
 -- --------------------------------------------------------
@@ -1861,7 +1866,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `tw
 (248, 'Prof. Neoma Bode', 'oral13@example.org', '2025-02-23 00:45:06', '$2y$12$Yz0pXjn8qKqM/hB1wduwpupRHNj.//8ol9N6k6oOSiIUbXqQ67RFK', NULL, NULL, NULL, 'rUzHiTGlCv', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 0, 'imgBands/user_default.png'),
 (249, 'Prof. Emerson Wunsch III', 'kreichert@example.net', '2025-02-23 00:45:06', '$2y$12$Yz0pXjn8qKqM/hB1wduwpupRHNj.//8ol9N6k6oOSiIUbXqQ67RFK', NULL, NULL, NULL, 'eVddZElpcD', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 0, 'imgBands/user_default.png'),
 (250, 'Mr. Friedrich Marks', 'linnea83@example.org', '2025-02-23 00:45:06', '$2y$12$Yz0pXjn8qKqM/hB1wduwpupRHNj.//8ol9N6k6oOSiIUbXqQ67RFK', NULL, NULL, NULL, 'riHyHXv9NE', '2025-02-23 00:45:06', '2025-02-23 00:45:06', 0, 'imgBands/user_default.png'),
-(251, 'admin', 'admin@gmail.com', NULL, '$2y$12$8T3p0zc2iixQLgkN2yCnd.Ew0WI5rB7ydq8GOBIlcerZE1GH/b.Te', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'imgBands/user_default.png');
+(251, 'admin', 'admin@gmail.com', NULL, '$2y$12$8T3p0zc2iixQLgkN2yCnd.Ew0WI5rB7ydq8GOBIlcerZE1GH/b.Te', NULL, NULL, NULL, NULL, NULL, NULL, 1, 'imgBands/user_default.png'),
+(252, 'licinio', 'l@gmail.com', NULL, '$2y$12$jA/gClJwddsboib8PmqYvuyzjworBgKyLprjZbaIDbhZIgSMotYB2', NULL, NULL, NULL, NULL, '2025-02-23 12:38:23', NULL, 0, 'imgBands/JIX20LF6PKphspMLq77jjpJwZqttrfekKxjIOp35.png');
 
 --
 -- Indexes for dumped tables
@@ -1966,7 +1972,7 @@ ALTER TABLE `bandas`
 -- AUTO_INCREMENT for table `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1990,7 +1996,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=252;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;
 
 --
 -- Constraints for dumped tables

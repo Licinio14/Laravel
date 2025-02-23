@@ -24,11 +24,14 @@ class DashboardController extends Controller
 
         if ($search){
             $Users = $Users
-                ->where('name','like', "%{$search}%");
+                ->where('name','like', "%{$search}%")
+                ->select('id','name','email','photo','user_type')
+                ->get();
+        }else{
+            $Users = $Users
+            ->select('id','name','email','photo','user_type')
+            ->paginate(10);
         }
-        $Users = $Users
-        ->select('id','name','email','photo','user_type')
-        ->get();
 
         return $Users;
 

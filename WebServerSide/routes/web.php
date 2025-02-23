@@ -43,7 +43,7 @@ Route::get('/show-all-albuns', [AlbunsController::class, 'index'])->name('albuns
 //para utilizadores
 Route::get('/add-users', [UserControler::class, 'addUser'] )->name('users.add');
 
-Route::post('/create-users', [UserControler::class, 'createUser'] )->name('users.create')->middleware(['auth', 'admin']);
+Route::post('/create-users', [UserControler::class, 'createUser'] )->name('users.create');
 
 Route::get('/delete-user/{id}', [UserControler::class, 'deleteUser'] )->name('users.delete')->middleware(['auth', 'admin']);
 

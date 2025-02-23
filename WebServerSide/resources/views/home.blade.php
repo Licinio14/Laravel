@@ -22,7 +22,7 @@
     @endif
 
     <div class="container-fluid">
-        <hr>
+        <br>
         <h1 class="merriweather-regular text-center">Bem-vindo a melhor database de bandas</h1>
         <hr>
 

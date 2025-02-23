@@ -76,9 +76,11 @@
 
         <hr>
 
-    <div class="container-fluid">
-        {{ $BandInfo->links('pagination::bootstrap-5') }}
-    </div>
+    @if (method_exists($BandInfo, 'links'))
+        <div class="container-fluid">
+            {{ $BandInfo->links('pagination::bootstrap-5') }}
+        </div>
+    @endif
 
     <br><hr><hr>
 

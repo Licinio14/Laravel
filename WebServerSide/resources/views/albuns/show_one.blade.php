@@ -72,6 +72,14 @@
 
     </table>
 
+    @if (method_exists($BandInfo, 'links'))
+        <div class="container-fluid">
+            {{ $BandInfo->links('pagination::bootstrap-5') }}
+        </div>
+    @endif
+
+
+
 
     @auth
 
