@@ -56,6 +56,10 @@
         @endforeach
     </div>
 
+    <div class="container-fluid">
+        {{ $chats->links('pagination::bootstrap-5') }}
+    </div>
+
     <br><hr><br>
 
     <div class="container text-center">
@@ -99,9 +103,7 @@
             </form>
         </div>
     </div>
-    <div class="container-fluid">
-        {{ $chats->links('pagination::bootstrap-5') }}
-    </div>
+
 
     <script src={{asset('js/scriptChat.js')}}></script>
 
